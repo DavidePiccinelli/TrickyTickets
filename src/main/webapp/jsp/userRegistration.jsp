@@ -1,5 +1,3 @@
-
-
 <%@page import="polimi.provafinale.trickytickets.ctl.UserRegistrationCtl"%>
 <%@page import="polimi.provafinale.trickytickets.util.HTMLUtility"%>
 <%@page import="java.util.HashMap"%>

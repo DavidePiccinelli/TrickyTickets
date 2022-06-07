@@ -8,14 +8,12 @@
 </head>
 <body>
 
-
 <%@ include file="header.jsp" %>
-
 
 <!-- Sfondo -->
   <div
           class="p-5 text-center bg-image"
-          style="background-image: url('https://img.wallpapersafari.com/desktop/1920/1080/23/23/RYrHwA.jpg');
+          style="background-image: url('https://external-preview.redd.it/uhq5zTcMPM3tOW_fbUz4PayDt_5pkEXdyXXoRWs3XOg.jpg?auto=webp&s=e06461124c1ccfdba7e9ece763b644ff68eeb06b');
           height: 805px;">
   
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.2);">
@@ -26,8 +24,7 @@
       </div>
     </div>
   </div>
-  <!-- Background image --> 
-  
+  <!-- Background image -->   
   
 <%@ include file="footer.jsp" %>
 </body>
