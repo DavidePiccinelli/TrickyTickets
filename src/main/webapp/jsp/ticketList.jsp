@@ -2,7 +2,7 @@
 <%@page import="polimi.provafinale.trickytickets.bean.TicketBean"%>
 <%@page import="polimi.provafinale.trickytickets.bean.CategoryBean"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
-<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%> 
 <%@page import="java.util.Iterator"%> 
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

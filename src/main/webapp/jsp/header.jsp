@@ -1,6 +1,6 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.BaseCtl"%>
 <%@page import="polimi.provafinale.trickytickets.bean.UserBean"%>
-<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%> 
 <!DOCTYPE html>

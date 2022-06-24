@@ -1,6 +1,6 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.MyProfileCtl"%>
 <%@page import="polimi.provafinale.trickytickets.util.HTMLUtility"%>
-<%@page import="java.util.HashMap"%> 
+<%@page import="java.util.HashMap"%>  
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
 <%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>

@@ -1,7 +1,7 @@
 
 <%@page import="java.util.List"%>
 <%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
-<%@page import="polimi.provafinale.trickytickets.bean.CategoryBean"%>
+<%@page import="polimi.provafinale.trickytickets.bean.CategoryBean"%> 
 <%@page import="polimi.provafinale.trickytickets.ctl.TicketCtl"%> 
 <%@page import="polimi.provafinale.trickytickets.util.HTMLUtility"%>
 <%@page import="polimi.provafinale.trickytickets.ctl.CategoryCtl"%>

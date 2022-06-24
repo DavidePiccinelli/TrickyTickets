@@ -2,7 +2,7 @@
 <%@page import="polimi.provafinale.trickytickets.util.HTMLUtility"%>
 <%@page import="polimi.provafinale.trickytickets.ctl.StatusCtl"%> 
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%>
-<%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%> 
 <%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
