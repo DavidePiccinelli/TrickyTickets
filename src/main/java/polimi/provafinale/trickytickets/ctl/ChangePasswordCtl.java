@@ -18,6 +18,10 @@ import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Servlet per la modifica della password: si occupa di fare tutti
+ * i controlli sulla consistenza dei dati con DataValidator dopodichè 
+ * effettua l'update del database*/
+
 @WebServlet(name = "ChangePasswordCtl", urlPatterns = { "/ctl/changePassword" })
 public class ChangePasswordCtl extends BaseCtl {
 	
@@ -109,13 +113,13 @@ public class ChangePasswordCtl extends BaseCtl {
 			}
 		} 
 
-		ServletUtility.forward(HTSView.CHANGE_PASSWORD_VIEW, request, response);
+		ServletUtility.forward(ViewsCtls.CHANGE_PASSWORD_VIEW, request, response);
 	}
 
 	@Override
 	protected String getView() {
 		
-		return HTSView.CHANGE_PASSWORD_VIEW;
+		return ViewsCtls.CHANGE_PASSWORD_VIEW;
 	}
 
 }

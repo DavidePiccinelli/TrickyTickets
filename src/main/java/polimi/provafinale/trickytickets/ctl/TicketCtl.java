@@ -20,6 +20,13 @@ import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa servlet gestisce la pagina di inserimento di un nuovo ticket; preload crea la 
+ * lista di categorie che verrà poi popolata 
+ * tramite HTMLUtility, validate controlla che i campi 
+ * non siano vuoti, populateBean crea il bean per il successivo salvataggio nel database, nella 
+ * Get avviene il controllo degli accessi (solo i fornitori possono vedere la pagina) e nella post 
+ * viene infine salvato il modello*/
+
 @WebServlet(name = "TicketCtl", urlPatterns = { "/ctl/ticket" })
 public class TicketCtl extends BaseCtl {
 	private static final long serialVersionUID = 1L;
@@ -77,7 +84,7 @@ public class TicketCtl extends BaseCtl {
 		UserBean user = (UserBean) session.getAttribute("user");	
 		
 		if (user.getRoleId() != 2)
-		{	ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+		{	ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}			
 		ServletUtility.forward(getView(), request, response);
@@ -102,7 +109,7 @@ public class TicketCtl extends BaseCtl {
 					ServletUtility.setSuccessMessage("Ticket inserito con successo", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+				ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 				return;
 			} catch (DuplicateRecordException e) {
 				ServletUtility.setBean(bean, request);
@@ -110,7 +117,7 @@ public class TicketCtl extends BaseCtl {
 			}
 
 		}   else if (OP_RESET.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(HTSView.TICKET_CTL, request, response);
+			ServletUtility.redirect(ViewsCtls.TICKET_CTL, request, response);
 			return;
 		}
 		ServletUtility.forward(getView(), request, response);
@@ -118,7 +125,7 @@ public class TicketCtl extends BaseCtl {
 
 	@Override
 	protected String getView() {
-		return HTSView.TICKET_VIEW;
+		return ViewsCtls.TICKET_VIEW;
 	}
 
 }

@@ -17,6 +17,10 @@ import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa Servlet cerca il nome utente e nel caso attua il comando che invia la password
+ * alla mail presente nel database; l'invio in questo caso viene però fatto direttamente dalla 
+ * classe model*/
+
 @WebServlet(name = "ForgetPasswordCtl", urlPatterns = { "/forgetPassword" })
 public class ForgetPasswordCtl extends BaseCtl {
 
@@ -83,7 +87,7 @@ public class ForgetPasswordCtl extends BaseCtl {
 
 	@Override
 	protected String getView() {
-		return HTSView.FORGET_PASSWORD_VIEW;
+		return ViewsCtls.FORGET_PASSWORD_VIEW;
 	}
 
 }

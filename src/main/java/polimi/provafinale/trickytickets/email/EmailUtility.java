@@ -13,7 +13,8 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-// Classe per l'invio dei messaggi mail al cambio di stato dei ticket, ripristino password, aggiunga commenti
+// Classe per l'invio dei messaggi mail al cambio di stato dei ticket, ripristino password, aggiunta commenti
+// Gli effettivi parametri sono gestiti nel file sistem.properties
 
 public class EmailUtility {
     public static void sendEmail(String host, String port,

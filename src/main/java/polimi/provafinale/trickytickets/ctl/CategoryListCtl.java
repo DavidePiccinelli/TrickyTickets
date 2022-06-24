@@ -19,13 +19,16 @@ import polimi.provafinale.trickytickets.util.DataUtility;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Servlet che genera la lista delle categorie esistenti, eventualmente con paginazione, 
+ * e consente la ricerca usando il nome come parametro*/
+
 @WebServlet(name = "CategoryListCtl", urlPatterns = { "/ctl/categoryList" })
 
 public class CategoryListCtl extends BaseCtl {
 	
 	private static final long serialVersionUID = 1L;
 
-	protected BaseBean populateBean(HttpServletRequest request) {
+	protected BaseBean populateBean(HttpServletRequest request) { //usato per la ricerca
 		
 		CategoryBean bean = new CategoryBean();
 		bean.setName(DataUtility.getString(request.getParameter("name")));
@@ -39,7 +42,7 @@ public class CategoryListCtl extends BaseCtl {
 		UserBean user = (UserBean) session.getAttribute("user");	
 		
 		if (user.getRoleId() != 1)
-		{	ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+		{	ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}
 		
@@ -84,7 +87,7 @@ public class CategoryListCtl extends BaseCtl {
 		
 		try {
 
-			if (OP_SEARCH.equalsIgnoreCase(op) || OP_NEXT.equalsIgnoreCase(op) || OP_PREVIOUS.equalsIgnoreCase(op)) {
+			if (OP_SEARCH.equalsIgnoreCase(op) || OP_NEXT.equalsIgnoreCase(op) || OP_PREVIOUS.equalsIgnoreCase(op)) { //Selezione del comando
 
 				if (OP_SEARCH.equalsIgnoreCase(op)) {
 					pageNo = 1;
@@ -95,7 +98,7 @@ public class CategoryListCtl extends BaseCtl {
 				}
 
 			} else if (OP_RESET.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(HTSView.CATEGORY_LIST_CTL, request, response);
+				ServletUtility.redirect(ViewsCtls.CATEGORY_LIST_CTL, request, response);
 				return;
 			}
 			list = model.search(bean, pageNo, pageSize);
@@ -117,6 +120,6 @@ public class CategoryListCtl extends BaseCtl {
 	}
 	
 	protected String getView() {
-		return HTSView.CATEGORY_LIST_VIEW;
+		return ViewsCtls.CATEGORY_LIST_VIEW;
 	}
 }

@@ -7,7 +7,7 @@
 <title>Tricky Tickets - Home</title>
 </head>
 <body>
-
+<!-- In questa JSP sono presenti unicamente lo sfondo e il messaggio di benvenuto, personalizzato nell'header -->
 
 <%@ include file="header.jsp" %>
 

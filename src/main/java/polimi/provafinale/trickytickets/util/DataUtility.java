@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/* Classe di supporto utilizzata per gestire e convalidare i tipi di dato ed i timestamp che tracciano nel DB mySQL lo storico delle modifiche */
+/* Classe di supporto utilizzata per gestire convalidare e formattare i tipi di dato ed i timestamp che tracciano nel DB mySQL lo storico delle modifiche */
 
 public class DataUtility {
 

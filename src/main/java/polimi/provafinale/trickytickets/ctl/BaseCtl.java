@@ -14,6 +14,12 @@ import polimi.provafinale.trickytickets.util.DataUtility;
 import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Classe astratta che estende la servlet e viene utilizzata per creare in maniera più 
+ * comoda le altre classi controllore. Vengono però già dati in forma concreta 
+ * i comandi per i pulsanti della view 
+ * ed i metodi service e populateDTO che va a scrivere il timestamp e l'autore 
+ * mentre i restanti metodi vengono ridefiniti nei rispettivi controllori*/
+
 @WebServlet("/BaseCtl")
 public abstract class BaseCtl extends HttpServlet {
 	
@@ -81,6 +87,8 @@ public abstract class BaseCtl extends HttpServlet {
 
 		preload(request);
 		String op = DataUtility.getString(request.getParameter("operation"));
+		
+		System.out.println("Service");
 
 		if (DataValidator.isNotNull(op) && !OP_RESET.equalsIgnoreCase(op)) {
 			if (!validate(request)) {

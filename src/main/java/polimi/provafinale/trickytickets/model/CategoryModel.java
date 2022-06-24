@@ -16,7 +16,7 @@ import polimi.provafinale.trickytickets.util.JDBCDataSource;
 
 public class CategoryModel {
 
-	public Integer nextPK() throws DatabaseException {
+	public Integer nextPK() throws DatabaseException { //individua il prossimo ID "libero" nella tabella
 
 		Connection conn = null;
 		int pk = 0;
@@ -37,7 +37,7 @@ public class CategoryModel {
 		return pk + 1;
 	}
 
-	public long add(CategoryBean bean) throws ApplicationException, DuplicateRecordException {
+	public long add(CategoryBean bean) throws ApplicationException, DuplicateRecordException { //scrive la nuova categoria nella tabella
 
 		Connection conn = null;
 		int pk = 0;
@@ -73,7 +73,7 @@ public class CategoryModel {
 		return pk;
 	}
 
-	public CategoryBean findByName(String name) throws ApplicationException {
+	public CategoryBean findByName(String name) throws ApplicationException { //utilizzata per la ricerca categorie 
 	
 		StringBuffer sql = new StringBuffer("SELECT * FROM Category WHERE name=?");
 		CategoryBean bean = null;
@@ -105,7 +105,7 @@ public class CategoryModel {
 		return bean;
 	}
 
-	public CategoryBean findByPK(long pk) throws ApplicationException {
+	public CategoryBean findByPK(long pk) throws ApplicationException {//utilizzata nella creazione nuovo ticket
 		StringBuffer sql = new StringBuffer("SELECT * FROM Category WHERE ID=?");
 		CategoryBean bean = null;
 		Connection conn = null;
@@ -137,11 +137,11 @@ public class CategoryModel {
 		return bean;
 	}
 
-	public List<CategoryBean> search(CategoryBean bean) throws ApplicationException {
+	public List<CategoryBean> search(CategoryBean bean) throws ApplicationException { //Utilizzata per la ricerca categorie se una pagina è sufficiente
 		return search(bean, 0, 0);
 	}
 
-	public List<CategoryBean> search(CategoryBean bean, int pageNo, int pageSize) throws ApplicationException {
+	public List<CategoryBean> search(CategoryBean bean, int pageNo, int pageSize) throws ApplicationException { //utilizzata per la ricerca categorie con paginazione
 		StringBuffer sql = new StringBuffer("SELECT * FROM Category WHERE 1=1");
 
 		if (bean != null) {
@@ -186,11 +186,11 @@ public class CategoryModel {
 		return list;
 	}
 
-	public List<CategoryBean> list() throws ApplicationException {
+	public List<CategoryBean> list() throws ApplicationException { //Utilizzata per creare un elenco di categorie se una pagina è sufficiente
 		return list(0, 0);
 	}
 
-	public List<CategoryBean> list(int pageNo, int pageSize) throws ApplicationException {
+	public List<CategoryBean> list(int pageNo, int pageSize) throws ApplicationException { //Utilizzata per creare l'elenco di categorie con paginazione
 	
 		ArrayList<CategoryBean> list = new ArrayList<CategoryBean>();
 		StringBuffer sql = new StringBuffer("select * from Category");
@@ -227,7 +227,7 @@ public class CategoryModel {
 
 	}
 	
-	public void delete(CategoryBean bean) throws ApplicationException {
+	public void delete(CategoryBean bean) throws ApplicationException {// elimina la categoria, al momento non usata
 
 		Connection conn = null;
 		try {

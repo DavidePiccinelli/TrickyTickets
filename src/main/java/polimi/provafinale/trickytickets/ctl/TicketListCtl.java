@@ -17,12 +17,17 @@ import polimi.provafinale.trickytickets.util.DataUtility;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa servlet mostra l'elenco dei ticket; gli utenti vedono soltanto
+ * i propri ticket e possono vedere o aggiungere commenti;
+ * se si è fornitori viene mostrato ogni ticket presente con possibilià anche di andare 
+ * a modificare lo stato del ticket, è inoltre possibile effettuare la ricerca */
+
 @WebServlet(name = "ticketListCtl", urlPatterns = { "/ctl/ticketList" })
 public class TicketListCtl extends BaseCtl {
 	
 	private static final long serialVersionUID = 1L;
 
-	protected BaseBean populateBean(HttpServletRequest request) {
+	protected BaseBean populateBean(HttpServletRequest request) { //usato per la ricerca
 
 		TicketBean bean = new TicketBean();
 		bean.setTitle(DataUtility.getString(request.getParameter("title")));
@@ -33,7 +38,7 @@ public class TicketListCtl extends BaseCtl {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException { //crea la lista dei ticket, eventualmente impaginata, e effettua il controllo dei ruoli utente
 
 		List<?> list = null;
 
@@ -69,7 +74,7 @@ public class TicketListCtl extends BaseCtl {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException {// gestisce l'esecuzione (o il reset) della ricerca oppure lo spostamento fra le pagine
 
 		List<?> list = null;
 		int pageNo = DataUtility.getInt(request.getParameter("pageNo"));
@@ -96,7 +101,7 @@ public class TicketListCtl extends BaseCtl {
 				}
 
 			}  else if (OP_RESET.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(HTSView.TICKET_LIST_CTL, request, response);
+				ServletUtility.redirect(ViewsCtls.TICKET_LIST_CTL, request, response);
 				return;
 			}
 			
@@ -123,6 +128,6 @@ public class TicketListCtl extends BaseCtl {
 	}
 	
 	protected String getView() {
-		return HTSView.TICKET_LIST_VIEW;
+		return ViewsCtls.TICKET_LIST_VIEW;
 	}
 }

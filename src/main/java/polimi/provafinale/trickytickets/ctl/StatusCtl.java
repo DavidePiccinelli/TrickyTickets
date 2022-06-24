@@ -21,6 +21,11 @@ import polimi.provafinale.trickytickets.util.DataUtility;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa Servlet gestisce la modifica dello stato del ticket. Questa pagina è accessibile soltanto ai
+ * fornitori, l'elenco degli stati possibili è definito direttamente e poi mostrato dalla view tramite menu a tendina,
+ * inoltre viene gestito l'invio della mail all'utente che ha aperto il ticket per ogni cambio di stato
+ * anche il testo della mail è qui definito*/
+
 @WebServlet(name = "StatusCtl", urlPatterns = { "/ctl/status" })
 
 public class StatusCtl extends BaseCtl {
@@ -80,18 +85,18 @@ public class StatusCtl extends BaseCtl {
 			exists = ticketModel.checkIfExist(tId);
 		} catch (ApplicationException e) {
 			e.printStackTrace();
-			ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 
 		}
 		
 		if(!exists) {
-			ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;			
 		}
 		
 		if (user.getRoleId() != 1)
-		{	ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+		{	ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}
 
@@ -146,7 +151,7 @@ public class StatusCtl extends BaseCtl {
 
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+				ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 				return;
 
 			} catch (DuplicateRecordException e) {
@@ -162,7 +167,7 @@ public class StatusCtl extends BaseCtl {
 
 	@Override
 	protected String getView() {
-		return HTSView.STATUS_VIEW;
+		return ViewsCtls.STATUS_VIEW;
 	}
 
 

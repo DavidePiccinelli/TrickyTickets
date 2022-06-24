@@ -1,5 +1,6 @@
 <%@page import="polimi.provafinale.trickytickets.bean.CommentBean"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -11,10 +12,14 @@
 <title>Lista commenti</title>
 </head>
 <body>
+
+<!-- Vista dell'elenco dei commenti relativi al ticket selezionato precedentemente, visualizzabile dai fornitori e dal creatore del ticket-->
+
+
 	<%@ include file="header.jsp"%> 
 	<hr>
 	<br> 
-	<form method="post" action="<%=HTSView.COMMENT_LIST_CTL%>">
+	<form method="post" action="<%=ViewsCtls.COMMENT_LIST_CTL%>">
 		<div class="card"> 
 			<h5 class="card-header"
 				style="background-color: #00061df7; color: white;">Lista commenti</h5>
@@ -60,7 +65,7 @@
 					</tbody>
 				</table> 
 <div>
-			<a class="btn btn-success  mb-4"  href="<%=HTSView.COMMENT_CTL%>?tId=<%=Integer.parseInt(request.getParameter("tId"))%>">aggiungi commento</a>
+			<a class="btn btn-success  mb-4"  href="<%=ViewsCtls.COMMENT_CTL%>?tId=<%=Integer.parseInt(request.getParameter("tId"))%>">aggiungi commento</a>
 					</div>
 			</div>									
 		</div>

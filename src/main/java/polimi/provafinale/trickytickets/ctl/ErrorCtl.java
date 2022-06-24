@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa servlet indirizza l'utente verso la pagina di errore*/
 
 @WebServlet(name = "ErrorCtl", urlPatterns = { "/error" })
 public class ErrorCtl extends BaseCtl {
@@ -22,7 +23,7 @@ public class ErrorCtl extends BaseCtl {
 	
 	@Override
 	protected String getView() {
-		return HTSView.ERROR_VIEW;
+		return ViewsCtls.ERROR_VIEW;
 	}
 
 }

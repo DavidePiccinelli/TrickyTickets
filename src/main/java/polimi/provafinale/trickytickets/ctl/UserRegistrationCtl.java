@@ -18,6 +18,13 @@ import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*In questa servlet viene gestita la registrazione di un nuovo utente; 
+ * il metodo validate si appoggia alla utility DataValidator 
+ * per verificare la correttezza dei dati inseriti; l'elenco dei reparti aziendali 
+ * businessAreaMap è definito direttamente in questa servlet
+ * e poi visualizzato con un menu a tendina nella view, che lo realizza sfruttando HTMLUtility
+ * il metodo Post cerca poi di salvare l'utente nel database se tutte le verifiche sono andate a buon fine*/
+
 @WebServlet(name = "UserRegistrationCtl", urlPatterns = { "/registration" })
 public class UserRegistrationCtl extends BaseCtl {
 	
@@ -128,7 +135,7 @@ public class UserRegistrationCtl extends BaseCtl {
 				bean.setId(pk);
 				request.getSession().setAttribute("UserBean", bean);
 				ServletUtility.setSuccessMessage("Registrazione completata con successo", request);
-				ServletUtility.forward(HTSView.USER_REGISTRATION_VIEW, request, response);
+				ServletUtility.forward(ViewsCtls.USER_REGISTRATION_VIEW, request, response);
 				return;
 			} catch (DuplicateRecordException e) {
 				ServletUtility.setBean(bean, request);
@@ -140,14 +147,14 @@ public class UserRegistrationCtl extends BaseCtl {
 				return;
 			}
 		} else if (OP_RESET.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(HTSView.USER_REGISTRATION_CTL, request, response);
+			ServletUtility.redirect(ViewsCtls.USER_REGISTRATION_CTL, request, response);
 			return;
 		}
 	}
 
 	@Override
 	protected String getView() {
-		return HTSView.USER_REGISTRATION_VIEW;
+		return ViewsCtls.USER_REGISTRATION_VIEW;
 	}
 
 }

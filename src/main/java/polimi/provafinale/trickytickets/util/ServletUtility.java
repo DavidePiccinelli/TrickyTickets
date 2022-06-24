@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import polimi.provafinale.trickytickets.bean.BaseBean;
 import polimi.provafinale.trickytickets.ctl.BaseCtl;
-import polimi.provafinale.trickytickets.ctl.HTSView;
+import polimi.provafinale.trickytickets.ctl.ViewsCtls;
 
 /* Classe di supporto creata per facilitare e velocizzare le operazioni ridondanti 
  * utilizzate nelle altre classi,principalmente nei Controller, 
@@ -35,7 +35,7 @@ public class ServletUtility {
 	public static void handleException(Exception e, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		request.setAttribute("exception", e);
-		ServletUtility.forward(HTSView.ERROR_CTL, request, response);
+		ServletUtility.forward(ViewsCtls.ERROR_CTL, request, response);
 		e.printStackTrace();
 	}
 

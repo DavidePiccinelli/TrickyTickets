@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa servlet gestisce la view di benvenuto welcome.jsp 
+ * dove viene mostrato un messaggio di benvenuto generico o personalizzato 
+ * senza ulteriori funzioni*/
 
 @WebServlet(name = "WelcomeCtl", urlPatterns = { "/welcome" })
 public class WelcomeCtl extends BaseCtl {
@@ -22,7 +25,7 @@ public class WelcomeCtl extends BaseCtl {
 	
 	@Override
 	protected String getView() {
-		return HTSView.WELCOME_VIEW;
+		return ViewsCtls.WELCOME_VIEW;
 	}
 
 }

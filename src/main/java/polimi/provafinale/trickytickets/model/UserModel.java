@@ -20,7 +20,7 @@ import polimi.provafinale.trickytickets.util.JDBCDataSource;
 public class UserModel {
 
 
-	public Integer nextPK() throws DatabaseException {
+	public Integer nextPK() throws DatabaseException { //Trova il prossimo ID valido
 		Connection conn = null;
 		int pk = 0;
 
@@ -41,7 +41,7 @@ public class UserModel {
 		return pk + 1;
 	}
 
-	public long add(UserBean bean) throws ApplicationException, DuplicateRecordException {
+	public long add(UserBean bean) throws ApplicationException, DuplicateRecordException { //Aggiunge nuovo utente alla tabella
 
 		Connection conn = null;
 		int pk = 0;
@@ -90,7 +90,7 @@ public class UserModel {
 		return pk;
 	}
 
-	public UserBean findByUserName(String UserName) throws ApplicationException {
+	public UserBean findByUserName(String UserName) throws ApplicationException { //Ricerca per nome utente nella tabella
 
 		StringBuffer sql = new StringBuffer("SELECT * FROM User WHERE USERNAME=?");
 		UserBean bean = null;
@@ -128,7 +128,7 @@ public class UserModel {
 		return bean;
 	}
 
-	public UserBean findByPK(long pk) throws ApplicationException {
+	public UserBean findByPK(long pk) throws ApplicationException { //Ricerca per ID
 
 		StringBuffer sql = new StringBuffer("SELECT * FROM User WHERE ID=?");
 		UserBean bean = null;
@@ -167,7 +167,7 @@ public class UserModel {
 		return bean;
 	}
 
-	public void update(UserBean bean) throws ApplicationException, DuplicateRecordException {
+	public void update(UserBean bean) throws ApplicationException, DuplicateRecordException { // Riscrive i dati quando l'utente aggiorna il profilo
 
 		Connection conn = null;
 
@@ -211,11 +211,11 @@ public class UserModel {
 		}
 	}
 
-	public List<UserBean> search(UserBean bean) throws ApplicationException {
+	public List<UserBean> search(UserBean bean) throws ApplicationException { //Ricerca su singola pagina
 		return search(bean, 0, 0);
 	}
 
-	public List<UserBean> search(UserBean bean, int pageNo, int pageSize) throws ApplicationException {
+	public List<UserBean> search(UserBean bean, int pageNo, int pageSize) throws ApplicationException { //Ricerca con paginazione 
 		StringBuffer sql = new StringBuffer("SELECT * FROM User WHERE 1=1");
 
 		if (bean != null) {
@@ -287,11 +287,11 @@ public class UserModel {
 		return list;
 	}
 
-	public List<UserBean> list() throws ApplicationException {
+	public List<UserBean> list() throws ApplicationException { //Lista in una sola pagina
 		return list(0, 0);
 	}
 
-	public List<UserBean> list(int pageNo, int pageSize) throws ApplicationException {
+	public List<UserBean> list(int pageNo, int pageSize) throws ApplicationException { //Lista con paginazione
 		ArrayList<UserBean> list = new ArrayList<UserBean>();
 		StringBuffer sql = new StringBuffer("select * from User");
 
@@ -334,7 +334,7 @@ public class UserModel {
 
 	}
 
-	public UserBean authenticate(String UserName, String password) throws ApplicationException {
+	public UserBean authenticate(String UserName, String password) throws ApplicationException { //Utilizzata per la verifica credenziali al login
 
 		StringBuffer sql = new StringBuffer("SELECT * FROM User WHERE USERNAME = ? AND PASSWORD = ?");
 		UserBean bean = null;
@@ -373,7 +373,7 @@ public class UserModel {
 	}
 
 	public boolean changePassword(Long id, String oldPassword, String newPassword)
-			throws RecordNotFoundException, ApplicationException {
+			throws RecordNotFoundException, ApplicationException { //Aggiorna la password dell'utente verificando anche che la vecchia sia valida
 
 		boolean flag = false;
 
@@ -396,7 +396,7 @@ public class UserModel {
 
 	}
 
-	public long registerUser(UserBean bean) throws ApplicationException, DuplicateRecordException {
+	public long registerUser(UserBean bean) throws ApplicationException, DuplicateRecordException { //Registra nuovo utente con la funzione add(UserBean)
 
 		long pk = add(bean);
 
@@ -404,7 +404,7 @@ public class UserModel {
 	}
 
 	public String forgetPassword(String login)
-			throws ApplicationException, RecordNotFoundException {
+			throws ApplicationException, RecordNotFoundException { //Invia la password alla mail dell'utente se lo username esiste
 		
 		UserBean UserData = findByUserName(login);
 	
@@ -431,7 +431,7 @@ public class UserModel {
 		return "Password inviata all'indirizzo: "+UserData.getEmail() ;
 	}
 	
-	public void delete(UserBean bean) throws ApplicationException {
+	public void delete(UserBean bean) throws ApplicationException { //Cancella utente, non usata
 
 		Connection conn = null;
 		try {

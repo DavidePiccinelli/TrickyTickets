@@ -18,6 +18,11 @@ import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa Servlet consente di visualizzare e modificare i dati del profilo utente 
+ * inoltre dalla view corrispondente è possibile 
+ * raggiungere la pagina per il cambio password. 
+ * Anche qui vengono verificati i campi nella validate 
+ * per poi andare ad aggiornare il database*/
 
 @WebServlet(name = "MyProfileCtl", urlPatterns = { "/ctl/myProfile" })
 public class MyProfileCtl extends BaseCtl {
@@ -144,7 +149,7 @@ public class MyProfileCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Username già in uso", request);
 			}
 		} else if (OP_CHANGE_MY_PASSWORD.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(HTSView.CHANGE_PASSWORD_CTL, request, response);
+			ServletUtility.redirect(ViewsCtls.CHANGE_PASSWORD_CTL, request, response);
 			return;
 		}
 		ServletUtility.forward(getView(), request, response);
@@ -153,7 +158,7 @@ public class MyProfileCtl extends BaseCtl {
 	@Override
 	protected String getView() {
 		
-		return HTSView.MY_PROFILE_VIEW;
+		return ViewsCtls.MY_PROFILE_VIEW;
 	}
 
 }

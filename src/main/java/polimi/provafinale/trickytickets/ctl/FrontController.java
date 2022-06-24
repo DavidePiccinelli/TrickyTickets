@@ -15,7 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
-// Classe che verifica la validità delle credenziali a ogni accesso -> init
+// Questa Servlet implementa Filter per il controllo della validità della sessione 
+
 
 @WebFilter(filterName="FrontCtl",urlPatterns={"/ctl/*","/doc/*"})
 
@@ -31,7 +32,11 @@ public class FrontController implements Filter {
 		HttpServletResponse response = (HttpServletResponse) resp;
 		HttpSession session = request.getSession(true);		
 		
+		
+		
 		if (session.getAttribute("user") == null) {
+			
+			System.out.println("Filtro KO");
 			
 			ServletUtility.setErrorMessage("Sessione scaduta, effettuare nuovamente l'accesso", request);
 			
@@ -42,13 +47,14 @@ public class FrontController implements Filter {
 			ServletUtility.forward("/login", request, response);
 			
 		} else {
+			System.out.println("Filtro OK");
 			chain.doFilter(req, resp);		
 		}
 	
 	}
 	
-	public void init(FilterConfig conf) throws ServletException {
-
+	public void init(FilterConfig conf) throws ServletException {		
+		
 	}
 
 }

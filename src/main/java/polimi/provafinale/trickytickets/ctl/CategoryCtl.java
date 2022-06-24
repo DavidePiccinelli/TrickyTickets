@@ -19,6 +19,10 @@ import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Servlet per l'aggiunta di una nuova categoria, 
+ * nella Get viene verificato che l'utente abbia il ruolo di fornitore; vengono poi 
+ * verificati i dati e infine la Post aggiunge la categoria*/
+
 @WebServlet(name = "CategoryCtl", urlPatterns = { "/ctl/category" })
 public class CategoryCtl extends BaseCtl {
 	
@@ -59,7 +63,7 @@ public class CategoryCtl extends BaseCtl {
 		UserBean user = (UserBean) session.getAttribute("user");	
 		
 		if (user.getRoleId() != 1)
-		{	ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+		{	ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}
 
@@ -75,7 +79,7 @@ public class CategoryCtl extends BaseCtl {
 		UserBean user = (UserBean) session.getAttribute("user");	
 		
 		if (user.getRoleId() != 1)
-		{	ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+		{	ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}
 	
@@ -94,7 +98,7 @@ public class CategoryCtl extends BaseCtl {
 			
 			catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+				ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 				return;
 
 			} catch (DuplicateRecordException e) {
@@ -103,7 +107,7 @@ public class CategoryCtl extends BaseCtl {
 			}
 
 		} else if (OP_RESET.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(HTSView.CATEGORY_CTL, request, response);
+			ServletUtility.redirect(ViewsCtls.CATEGORY_CTL, request, response);
 			return;
 		}
 		
@@ -112,7 +116,7 @@ public class CategoryCtl extends BaseCtl {
 
 	@Override
 	protected String getView() {
-		return HTSView.CATEGORY_VIEW;
+		return ViewsCtls.CATEGORY_VIEW;
 	}
 
 

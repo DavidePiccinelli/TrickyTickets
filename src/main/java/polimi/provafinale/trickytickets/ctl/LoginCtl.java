@@ -16,7 +16,9 @@ import polimi.provafinale.trickytickets.util.DataUtility;
 import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
-
+/*Questa servlet gestisce il login e il logout degli utenti 
+ * tramite l'abbinata username e password
+ * verificando sempre prima che i campi siano valorizzati*/
 @WebServlet(name = "LoginCtl", urlPatterns = { "/login" })
 public class LoginCtl extends BaseCtl {
 
@@ -69,11 +71,11 @@ public class LoginCtl extends BaseCtl {
 			session = request.getSession(false);
 			session.invalidate();
 			ServletUtility.setSuccessMessage("Disconnessione effettuata", request);
-			ServletUtility.forward(HTSView.LOGIN_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.LOGIN_VIEW, request, response);
 			return;
 		}
 		if (session.getAttribute("user") != null) {
-			ServletUtility.redirect(HTSView.WELCOME_CTL, request, response);
+			ServletUtility.redirect(ViewsCtls.WELCOME_CTL, request, response);
 			return;
 		}
 		ServletUtility.forward(getView(), request, response);
@@ -92,7 +94,7 @@ public class LoginCtl extends BaseCtl {
 				bean = model.authenticate(bean.getUserName(), bean.getPassword());
 				if (bean != null) {
 					session.setAttribute("user", bean);
-					ServletUtility.redirect(HTSView.WELCOME_CTL, request, response);
+					ServletUtility.redirect(ViewsCtls.WELCOME_CTL, request, response);
 					return;
 				} else {
 					bean = (UserBean) populateBean(request);
@@ -104,7 +106,7 @@ public class LoginCtl extends BaseCtl {
 				return;
 			}
 		} else if (OP_SIGN_UP.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(HTSView.USER_REGISTRATION_CTL, request, response);
+			ServletUtility.redirect(ViewsCtls.USER_REGISTRATION_CTL, request, response);
 			return;
 		}
 		ServletUtility.forward(getView(), request, response);	
@@ -112,7 +114,7 @@ public class LoginCtl extends BaseCtl {
 
 	@Override
 	protected String getView() {
-		return HTSView.LOGIN_VIEW;
+		return ViewsCtls.LOGIN_VIEW;
 	}
 
 }

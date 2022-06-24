@@ -1,6 +1,6 @@
-<%@page import="polimi.provafinale.trickytickets.ctl.HTSView"%>
 <%@page import="polimi.provafinale.trickytickets.ctl.BaseCtl"%>
 <%@page import="polimi.provafinale.trickytickets.bean.UserBean"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%> 
 <!DOCTYPE html>
@@ -8,6 +8,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Header</title>
+
+<!-- Vista principale dell'applicazione, è presente in ogni pagina e contiene tutti i comandi di navigazione fra le varie viste.
+i bottoni mostrati cambiamo a seconda del ruolo dell'utente: Utente, Fornitore, Ospite inoltre crea il messaggio di benvenuto usato nella
+vista Welcome-->
 
 
 <!-- Font Awesome -->
@@ -68,7 +72,7 @@
 			<div class="collapse navbar-collapse" id="navbarButtonsExample">
 				<!-- Left links -->
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="<%=HTSView.WELCOME_CTL%>">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="<%=ViewsCtls.WELCOME_CTL%>">Home</a></li>
 
 					<%
 					if (userLoggedIn) {
@@ -79,7 +83,7 @@
 					%>
 
 					<li class="nav-item"><a class="nav-link"
-						href="<%=HTSView.USER_LIST_CTL%>">Elenco utenti</a></li>
+						href="<%=ViewsCtls.USER_LIST_CTL%>">Elenco utenti</a></li>
 
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
@@ -88,16 +92,16 @@
 							Categorie</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<li><a class="dropdown-item"
-								href="<%=HTSView.CATEGORY_CTL%>">Aggiungi categoria</a></li>
+								href="<%=ViewsCtls.CATEGORY_CTL%>">Aggiungi categoria</a></li>
 							<li><a class="dropdown-item"
-								href="<%=HTSView.CATEGORY_LIST_CTL%>">Vedi categorie</a></li>
+								href="<%=ViewsCtls.CATEGORY_LIST_CTL%>">Vedi categorie</a></li>
 						</ul></li>
 						
 						<li class="nav-item"><a class="nav-link"
-						href="<%=HTSView.TICKET_LIST_CTL%>">Elenco dei ticket</a></li>
+						href="<%=ViewsCtls.TICKET_LIST_CTL%>">Elenco dei ticket</a></li>
 						
 						<li class="nav-item"><a class="nav-link"
-						href="<%=HTSView.MY_PROFILE_CTL%>">Profilo utente</a></li>
+						href="<%=ViewsCtls.MY_PROFILE_CTL%>">Profilo utente</a></li>
 					<%
 					}
 					%>
@@ -112,14 +116,14 @@
 						id="navbarDropdownMenuLink" role="button"
 						data-mdb-toggle="dropdown" aria-expanded="false">Ticket</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<li><a class="dropdown-item" href="<%=HTSView.TICKET_CTL%>">Apri
+							<li><a class="dropdown-item" href="<%=ViewsCtls.TICKET_CTL%>">Apri
 									Ticket</a></li>
 							<li><a class="dropdown-item"
-								href="<%=HTSView.TICKET_LIST_CTL%>">Vedi ticket</a></li>
+								href="<%=ViewsCtls.TICKET_LIST_CTL%>">Vedi ticket</a></li>
 						</ul></li>
 					
 						<li class="nav-item"><a class="nav-link"
-						href="<%=HTSView.MY_PROFILE_CTL%>">Profilo utente</a></li>
+						href="<%=ViewsCtls.MY_PROFILE_CTL%>">Profilo utente</a></li>
 					<%
 					}
 					}
@@ -133,10 +137,10 @@
 					<%
 					if (!userLoggedIn) {
 					%>
-					<a href="<%=HTSView.LOGIN_CTL%>" class="btn btn-primary me-3">Accedi</a>
-					<a href="<%=HTSView.USER_REGISTRATION_CTL%>"
+					<a href="<%=ViewsCtls.LOGIN_CTL%>" class="btn btn-primary me-3">Accedi</a>
+					<a href="<%=ViewsCtls.USER_REGISTRATION_CTL%>"
 						class="btn btn-primary me-3"><%=BaseCtl.OP_SIGN_UP%></a>						
-					<a href="<%=HTSView.FORGET_PASSWORD_CTL%>"
+					<a href="<%=ViewsCtls.FORGET_PASSWORD_CTL%>"
 						class="btn btn-primary me-3">Password dimenticata</a>
 					<%
 					} else {
@@ -144,7 +148,7 @@
 					<%
 					if (userLoggedIn) {
 					%>
-					<a href="<%=HTSView.LOGIN_CTL%>?operation=Logout"
+					<a href="<%=ViewsCtls.LOGIN_CTL%>?operation=Esci"
 						class="btn btn-primary me-3">Esci</a>
 
 

@@ -3,6 +3,7 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.StatusCtl"%> 
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -13,6 +14,12 @@
 <title>Stato ticket</title>
 </head>
 <body>
+
+<!--La pagina innanzitutto ottiene i dati per il timestamp, 
+dopodiche consente la selezione da menu a tendina
+del nuovo stato in cui porre il ticket e aggiorna il ticket tramite post col comando Save
+  -->
+
 	<%@ include file="header.jsp"%>
 	<div class="container">
 		<hr>
@@ -25,7 +32,7 @@
 				</font></b> <b><font color="Green"> <%=ServletUtility.getSuccessMessage(request)%>
 				</font></b>
 				<hr>
-				<form method="post" action="<%=HTSView.STATUS_CTL%>">
+				<form method="post" action="<%=ViewsCtls.STATUS_CTL%>">
 
 					<jsp:useBean id="bean" class="polimi.provafinale.trickytickets.bean.TicketBean"
 						scope="request"></jsp:useBean> 

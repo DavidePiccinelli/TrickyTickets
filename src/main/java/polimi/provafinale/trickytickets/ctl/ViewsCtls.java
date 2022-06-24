@@ -1,8 +1,9 @@
 package polimi.provafinale.trickytickets.ctl;
 
-// Classe che raccoglie i percorsi di ogni Vista e Controllore
+/* Classe che raccoglie i percorsi di ogni Vista e Controllore per 
+ * avere un reindirizzamento più comodo e sicuro sia nelle view che nelle altre servlet*/
 
-public interface HTSView {
+public interface ViewsCtls {
 
 	public String APP_CONTEXT = "/trickytickets";
 

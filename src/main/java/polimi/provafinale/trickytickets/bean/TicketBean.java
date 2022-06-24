@@ -3,6 +3,7 @@ package polimi.provafinale.trickytickets.bean;
 import java.util.Date;
 
 //Bean per i ticket che gli utenti possono creare estende la classe astratta BaseBean aggiungendo solo i dati rilevanti 
+// ossia nome e id della categoria, numero del ticket, titolo, dati di chi lo crea e infine la descrizione
 
 
 public class TicketBean extends BaseBean {

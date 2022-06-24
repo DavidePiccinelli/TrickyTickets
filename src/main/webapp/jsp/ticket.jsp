@@ -1,5 +1,6 @@
 
 <%@page import="java.util.List"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="polimi.provafinale.trickytickets.bean.CategoryBean"%>
 <%@page import="polimi.provafinale.trickytickets.ctl.TicketCtl"%> 
 <%@page import="polimi.provafinale.trickytickets.util.HTMLUtility"%>
@@ -16,6 +17,11 @@
 <title>Apri ticket</title>
 </head>
 <body>
+
+<!--La pagina innanzitutto ottiene i dati per il timestamp, poi va a creare un nuovo ticket, la categoria è selezionata da
+menu a tendina -->
+
+
 	<%@ include file="header.jsp"%>
 		<hr>
 		<br>
@@ -28,7 +34,7 @@
 				</font></b> <b><font color="Green"> <%=ServletUtility.getSuccessMessage(request)%>
 				</font></b>
 				<hr>
-				<form method="post" action="<%=HTSView.TICKET_CTL%>">
+				<form method="post" action="<%=ViewsCtls.TICKET_CTL%>">
 
 					<jsp:useBean id="bean" class="polimi.provafinale.trickytickets.bean.TicketBean"
 						scope="request"></jsp:useBean>

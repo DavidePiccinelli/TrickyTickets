@@ -9,6 +9,7 @@
 <body>
 <footer class="bg-dark text-center text-white">
 
+<!-- presente in ogni view, è il footer delle pagine  -->
 
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
     2022 Davide Piccinelli - Politecnico di Milano

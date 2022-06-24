@@ -22,6 +22,9 @@ import polimi.provafinale.trickytickets.util.DataValidator;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Servlet che gestisce l'aggiunta di un commento ad un ticket: nella Get sono inclusi 
+ * i controlli di sicurezza, ossia la verifica dell'esistenza e del possesso del ticket qualora
+ *ad accedere sia un utente e non un fornitore*/
 
 @WebServlet(name = "CommentCtl", urlPatterns = { "/ctl/comment" })
 public class CommentCtl extends BaseCtl {
@@ -65,7 +68,7 @@ public class CommentCtl extends BaseCtl {
 			tId = Integer.parseInt(request.getParameter("tId"));
 			request.getSession().setAttribute("tId",tId);
 		} catch (NumberFormatException | NullPointerException e) {
-			ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}	
 		
@@ -73,7 +76,7 @@ public class CommentCtl extends BaseCtl {
 			exists = ticketModel.checkIfExist(tId);
 		} catch (ApplicationException e) {
 			e.printStackTrace();
-			ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}
 		
@@ -81,18 +84,18 @@ public class CommentCtl extends BaseCtl {
 			ticket = ticketModel.findByPK(tId);
 		} catch (ApplicationException e) {
 			e.printStackTrace();
-			ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}
 		
 		if(!exists) {
-			ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;			
 		}		
 		
 		if (user.getRoleId() != 1) {
 			if (ticket.getUserId() != user.getId()) {
-				ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+				ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 				return;
 			}
 		}
@@ -163,7 +166,7 @@ public class CommentCtl extends BaseCtl {
 
 	@Override
 	protected String getView() {
-		return HTSView.COMMENT_VIEW;
+		return ViewsCtls.COMMENT_VIEW;
 	}
 
 }

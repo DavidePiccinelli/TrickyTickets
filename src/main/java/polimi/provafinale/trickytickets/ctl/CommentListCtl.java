@@ -19,6 +19,10 @@ import polimi.provafinale.trickytickets.model.TicketModel;
 import polimi.provafinale.trickytickets.util.DataUtility;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa servlet gestisce la pagina che mostra la lista di commenti relativi ad un ticket
+ * nella Get sono incorporati i controlli di sicurezza: verifica dell'esistenza del ticket e, in caso
+ * l'utente non sia un fornitore, verifica dell'effettiva proprietà del ticket a cui sono legati i commenti*/
+
 @WebServlet(name = "CommentListCtl", urlPatterns = { "/ctl/commentList" })
 public class CommentListCtl extends BaseCtl {
 	
@@ -59,13 +63,13 @@ public class CommentListCtl extends BaseCtl {
 			exists = ticketModel.checkIfExist(tId);
 		} catch (ApplicationException e) {
 			e.printStackTrace();
-			ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 
 		}
 		
 		if(!exists) {
-			ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+			ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;			
 		}
 		
@@ -74,12 +78,12 @@ public class CommentListCtl extends BaseCtl {
 				ticket = ticketModel.findByPK(tId);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+				ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 				return;
 			}
 
 			if (ticket.getUserId() != user.getId()) {
-				ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+				ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 				return;
 			}
 
@@ -122,6 +126,6 @@ public class CommentListCtl extends BaseCtl {
 	}
 	
 	protected String getView() {
-		return HTSView.COMMENT_LIST_VIEW;
+		return ViewsCtls.COMMENT_LIST_VIEW;
 	}
 }

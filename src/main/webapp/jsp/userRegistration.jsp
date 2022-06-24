@@ -1,5 +1,6 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.UserRegistrationCtl"%>
 <%@page import="polimi.provafinale.trickytickets.util.HTMLUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%> 
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
@@ -13,6 +14,9 @@
 </head>
 <body>
 
+<!--La pagina innanzitutto ottiene i dati per il timestamp, dopodichè realizza una 
+form per la registrazione del nuovo utente, i campi vengono controllati e il reparto dell'azienda 
+selezionato dal menu a tendina, viene poi effettuata la post per la registrazione -->
 
 	<%@ include file="header.jsp"%>
 	
@@ -26,7 +30,7 @@
 				</font></b> <b><font color="Green"> <%=ServletUtility.getSuccessMessage(request)%>
 				</font></b> 
 				<hr>
-				<form method="post" action="<%=HTSView.USER_REGISTRATION_CTL%>">
+				<form method="post" action="<%=ViewsCtls.USER_REGISTRATION_CTL%>">
 
 					<jsp:useBean id="bean" class="polimi.provafinale.trickytickets.bean.UserBean"
 						scope="request"></jsp:useBean>
@@ -40,7 +44,7 @@
 					<input type="hidden" name="modifiedDatetime"
 						value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
 
-					<!-- Email input -->
+					<!-- Invio dati -->
 					<div class="form-outline mb-4">
 					 <label
 							class="form-label" >Nome</label>

@@ -1,6 +1,7 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.LoginCtl"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%> 
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,12 +12,15 @@
 </head>
 <body>
 
+<!--La pagina innanzitutto ottiene i dati per il timestamp poi consente di inserire le credenziali per l'accesso da inviare tramite post
+con comando login-->
+
 	<%@ include file="header.jsp"%>
 	<hr>
 	<br>	
 			<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 				
-				<form method="post" action="<%=HTSView.LOGIN_CTL%>">
+				<form method="post" action="<%=ViewsCtls.LOGIN_CTL%>">
 					<jsp:useBean id="bean"
 								class="polimi.provafinale.trickytickets.bean.UserBean"
 								scope="request"></jsp:useBean> 
@@ -42,7 +46,7 @@
 					</font></b> <b><font color="Green" size="2px"> <%=ServletUtility.getSuccessMessage(request)%>
 					</font></b>
 
-					<!-- Email input -->
+					<!-- Form credenziali -->
 					<div class="form-outline mb-4">
 					<h3>Inserisci le tue credenziali</h3>
 					<label

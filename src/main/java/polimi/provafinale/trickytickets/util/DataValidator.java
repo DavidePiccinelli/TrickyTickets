@@ -2,7 +2,7 @@ package polimi.provafinale.trickytickets.util;
 
 import java.util.Date;
 
-// Classe che verifica la correttezza dei dati inseriti dall'utente (date, email etc)
+// Classe che verifica la correttezza dei dati inseriti dall'utente (date, email, password e così via)
 
 public class DataValidator {
 

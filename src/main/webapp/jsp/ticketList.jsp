@@ -2,6 +2,7 @@
 <%@page import="polimi.provafinale.trickytickets.bean.TicketBean"%>
 <%@page import="polimi.provafinale.trickytickets.bean.CategoryBean"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.Iterator"%> 
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -11,13 +12,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Elenco ticket</title>
-<link href="<%=HTSView.APP_CONTEXT%>/css/login.css" rel="stylesheet">
+<link href="<%=ViewsCtls.APP_CONTEXT%>/css/login.css" rel="stylesheet">
 </head>
 <body>
+
+<!-- Elenco dinamico dei ticket, mostra tutti i ticket e i relativi campi
+se si è fornitori o solo i propri ticket se si è utenti, contiene i comandi 
+per aggiungere e visualizzare i commenti e , solo per i fornitori, 
+il comando per cambiare lo stato del ticket.
+In alto sono presenti i campi per la ricerca nei ticket
+in fondo i pulsanti per lo spostamento in caso di paginazione-->
+
 	<%@ include file="header.jsp"%> 
 	<hr>
 	<br>
-	<form method="post" action="<%=HTSView.TICKET_LIST_CTL%>">
+	<form method="post" action="<%=ViewsCtls.TICKET_LIST_CTL%>">
 		<div class="card">
 			<h5 class="card-header"
 				style="background-color: #00061df7; color: white;">Elenco ticket</h5>
@@ -88,18 +97,18 @@
 							<td scope="row"><%=bean.getDescription()%></td>
 							<%if(userBean.getRoleId()==2){%>
 							<td>
-							<a class="btn btn-sm btn-info" href="<%=HTSView.COMMENT_CTL%>?tId=<%=bean.getId()%>">aggiungi commento</a>
-							<a class="btn btn-sm btn-info" href="<%=HTSView.COMMENT_LIST_CTL%>?tId=<%=bean.getId()%>">vedi commenti</a>
+							<a class="btn btn-sm btn-info" href="<%=ViewsCtls.COMMENT_CTL%>?tId=<%=bean.getId()%>">aggiungi commento</a>
+							<a class="btn btn-sm btn-info" href="<%=ViewsCtls.COMMENT_LIST_CTL%>?tId=<%=bean.getId()%>">vedi commenti</a>
 							</td>
 							<%} %>	
 							
 							<%if(userBean.getRoleId()==1){%>
-							<td><a class="btn btn-sm btn-info" href="<%=HTSView.STATUS_CTL%>?tId=<%=bean.getId()%>">modifica stato
+							<td><a class="btn btn-sm btn-info" href="<%=ViewsCtls.STATUS_CTL%>?tId=<%=bean.getId()%>">modifica stato
 									</a>
-									<a class="btn btn-sm btn-info" href="<%=HTSView.COMMENT_CTL%>?tId=<%=bean.getId()%>">aggiungi commento
+									<a class="btn btn-sm btn-info" href="<%=ViewsCtls.COMMENT_CTL%>?tId=<%=bean.getId()%>">aggiungi commento
 									</a>
 									
-									<a class="btn btn-sm btn-info" href="<%=HTSView.COMMENT_LIST_CTL%>?tId=<%=bean.getId()%>">vedi commenti
+									<a class="btn btn-sm btn-info" href="<%=ViewsCtls.COMMENT_LIST_CTL%>?tId=<%=bean.getId()%>">vedi commenti
 									</a>
 									</td>
 							<%} %>		

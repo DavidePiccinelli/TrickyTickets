@@ -2,10 +2,10 @@ package polimi.provafinale.trickytickets.bean;
 
 import java.sql.Timestamp;
 
-// Bean base, astratto poiché utilizzato per creare, per ereditarietà, gli altri Bean utilizzati in concreto
-// Dotato degli attributi base e dei getter/setter
+/* Bean base, astratto poiché utilizzato per creare, per ereditarietà, gli altri Bean utilizzati in concreto
+ Dotato degli attributi base e dei getter/setter, in esso ho messo tutte le variabili per il tracciamento delle modifiche e delle creazioni degli elementi del database*/
 
-public abstract class BaseBean implements Comparable<BaseBean> {
+public abstract class BaseBean {
 	
 	
 	protected long id;
@@ -22,13 +22,7 @@ public abstract class BaseBean implements Comparable<BaseBean> {
 	public String getValue() {
 		return name;
 	}
-	
-	@Override
-	public int compareTo(BaseBean b) {
-	
-		return getValue().compareTo(b.getValue());
-	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -68,10 +62,5 @@ public abstract class BaseBean implements Comparable<BaseBean> {
 	public void setModifiedDatetime(Timestamp modifiedDatetime) {
 		this.modifiedDatetime = modifiedDatetime;
 	}
-	
-	
-
-	
-	
 	
 }

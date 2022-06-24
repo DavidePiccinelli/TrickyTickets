@@ -1,4 +1,5 @@
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" 
@@ -8,17 +9,19 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Elenco utenti</title>
-<link href="<%=HTSView.APP_CONTEXT%>/css/login.css" rel="stylesheet">
+<link href="<%=ViewsCtls.APP_CONTEXT%>/css/login.css" rel="stylesheet">
 </head>
 <body>
 
+<!--La pagina visualizza l'elenco navigabile degli utenti con paginazione. Deve essere accessibile solo ai fornitori che però
+non possono vedere altri fornitori, solo utenti-->
 
 	<%@ include file="header.jsp"%> 
 	
 	
 	<hr>
 	<br>
-	<form method="post" action="<%=HTSView.USER_LIST_CTL%>">
+	<form method="post" action="<%=ViewsCtls.USER_LIST_CTL%>">
 		<div class="card">
 			<h5 class="card-header" 
 				style="background-color: #00061df7; color: white;">Elenco utenti</h5>

@@ -1,6 +1,6 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.ChangePasswordCtl"%>
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%>
-<%@page import="polimi.provafinale.trickytickets.ctl.HTSView"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -11,6 +11,10 @@
 <title>Cambia password</title>
 </head>
 <body>
+
+<!--La pagina innanzitutto ottiene i dati per il timestamp poi va ad aggiornare la password dell'utente 
+tramite la corretta compilazione della form -->
+
 	<%@ include file="header.jsp"%>
 	<div class="container">
 		<hr>
@@ -23,7 +27,7 @@
 				</font></b> <b><font color="Green"> <%=ServletUtility.getSuccessMessage(request)%>
 				</font></b>
 				<hr>
-				<form method="post" action="<%=HTSView.CHANGE_PASSWORD_CTL%>">
+				<form method="post" action="<%=ViewsCtls.CHANGE_PASSWORD_CTL%>">
 
 					<!-- Tracciamento utenti e timestamp modifiche -->
 

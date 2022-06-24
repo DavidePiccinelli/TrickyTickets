@@ -1,6 +1,7 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.CategoryCtl"%>
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -11,6 +12,10 @@
 <title>Categoria</title>
 </head>
 <body>
+
+<!--La pagina innanzitutto ottiene i dati per il timestamp poi consente di creare una nuova categoria riempiendo la form
+inserendo quindi titolo e descrizione della categoria. Alla pagina possono accedere solo i fornitori -->
+
 	<%@ include file="header.jsp"%>
 	<hr>
 	<br>
@@ -21,7 +26,7 @@
 			<b><font color="red"> <%=ServletUtility.getErrorMessage(request)%></font></b>
 			<b><font color="Green"> <%=ServletUtility.getSuccessMessage(request)%></font></b>
 			<hr>
-			<form method="post" action="<%=HTSView.CATEGORY_CTL%>">
+			<form method="post" action="<%=ViewsCtls.CATEGORY_CTL%>">
 				<!-- Timestamp -->
 				<jsp:useBean id="bean"
 					class="polimi.provafinale.trickytickets.bean.CategoryBean"

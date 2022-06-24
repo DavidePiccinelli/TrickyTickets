@@ -1,5 +1,6 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.ForgetPasswordCtl"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,6 +10,10 @@
 <title>Password dimenticata</title>
 </head>
 <body>
+
+<!-- Pagina con form in cui inserire lo username per il recupero della password-->
+
+
 	<%@ include file="header.jsp"%>
 	<div class="container">
 		<hr>
@@ -21,7 +26,7 @@
 				</font></b> <b><font color="Green"> <%=ServletUtility.getSuccessMessage(request)%>
 				</font></b>
 				<hr>
-				<form method="post" action="<%=HTSView.FORGET_PASSWORD_CTL%>">
+				<form method="post" action="<%=ViewsCtls.FORGET_PASSWORD_CTL%>">
 
 					
 

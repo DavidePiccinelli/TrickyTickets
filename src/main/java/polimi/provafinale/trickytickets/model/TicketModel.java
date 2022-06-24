@@ -18,7 +18,7 @@ import polimi.provafinale.trickytickets.util.JDBCDataSource;
 
 public class TicketModel {
 
-	public Integer nextPK() throws DatabaseException {
+	public Integer nextPK() throws DatabaseException { //Trova il prossimo ID ticket valido 
 
 		Connection conn = null;
 		int pk = 0;
@@ -40,7 +40,7 @@ public class TicketModel {
 		return pk + 1;
 	}
 	
-	public Long nextTicketNo() throws DatabaseException {
+	public Long nextTicketNo() throws DatabaseException { //Trova il prossimo numero ticket valido
 
 		Connection conn = null;
 		long pk = 0;
@@ -66,7 +66,7 @@ public class TicketModel {
 		}
 	}
 
-	public long add(TicketBean bean) throws ApplicationException, DuplicateRecordException {
+	public long add(TicketBean bean) throws ApplicationException, DuplicateRecordException { //Aggiunge nuovo ticket al database
 
 		Connection conn = null;
 		int pk = 0;
@@ -111,7 +111,7 @@ public class TicketModel {
 		return pk;
 	}
 
-	public TicketBean findByTitle(String title) throws ApplicationException {
+	public TicketBean findByTitle(String title) throws ApplicationException { //Ricerca per nome del ticket
 
 		StringBuffer sql = new StringBuffer("SELECT * FROM Ticket WHERE title=?");
 		TicketBean bean = null;
@@ -150,7 +150,7 @@ public class TicketModel {
 		return bean;
 	}
 
-	public TicketBean findByPK(long pk) throws ApplicationException {
+	public TicketBean findByPK(long pk) throws ApplicationException { //Ricerca per id del ticket, usata principalmente nei controlli di sicurezza
 		StringBuffer sql = new StringBuffer("SELECT * FROM Ticket WHERE ID=?");
 		TicketBean bean = null;
 		Connection conn = null;
@@ -189,7 +189,7 @@ public class TicketModel {
 		return bean;
 	}
 
-	public void update(TicketBean bean) throws ApplicationException, DuplicateRecordException {
+	public void update(TicketBean bean) throws ApplicationException, DuplicateRecordException { //Aggiorna il ticket quando lo stato viene modificato dal fornitore
 
 		Connection conn = null;
 
@@ -232,11 +232,11 @@ public class TicketModel {
 
 	}
 
-	public List<TicketBean> search(TicketBean bean) throws ApplicationException {
+	public List<TicketBean> search(TicketBean bean) throws ApplicationException { //Ricerca nella lista di ticket in una sola pagina
 		return search(bean, 0, 0);
 	}
 
-	public List<TicketBean> search(TicketBean bean, int pageNo, int pageSize) throws ApplicationException {
+	public List<TicketBean> search(TicketBean bean, int pageNo, int pageSize) throws ApplicationException { //Ricerca nella lista di ticket in più pagine
 		StringBuffer sql = new StringBuffer("SELECT * FROM Ticket WHERE 1=1");
 
 		if (bean != null) {
@@ -303,11 +303,11 @@ public class TicketModel {
 		return list;
 	}
 
-	public List<TicketBean> list() throws ApplicationException {
+	public List<TicketBean> list() throws ApplicationException { //Visualizza la lista di ticket in una pagina
 		return list(0, 0);
 	}
 
-	public List<TicketBean> list(int pageNo, int pageSize) throws ApplicationException {
+	public List<TicketBean> list(int pageNo, int pageSize) throws ApplicationException { //Visualizza la lista di ticket in più pagine
 		ArrayList<TicketBean> list = new ArrayList<TicketBean>();
 		StringBuffer sql = new StringBuffer("select * from Ticket");
 
@@ -350,7 +350,7 @@ public class TicketModel {
 
 	}
 
-	public boolean checkIfExist(long pk) throws ApplicationException {
+	public boolean checkIfExist(long pk) throws ApplicationException { //Controlla se un ticket esiste, usata per i controlli di sicurezza
 		StringBuffer sql = new StringBuffer("SELECT * FROM Ticket WHERE ID=?");
 		TicketBean bean = null;
 		Connection conn = null;
@@ -392,7 +392,7 @@ public class TicketModel {
 		return true;
 	}
 	
-	public void delete(TicketBean bean) throws ApplicationException {
+	public void delete(TicketBean bean) throws ApplicationException { //Elimina ticket, non usata
 
 		Connection conn = null;
 		try {

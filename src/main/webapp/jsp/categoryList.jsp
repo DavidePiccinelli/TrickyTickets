@@ -1,5 +1,6 @@
 <%@page import="polimi.provafinale.trickytickets.bean.CategoryBean"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -11,11 +12,17 @@
 <title>Elenco categorie</title>
 </head>
 
+
+<!-- Elenco dinamico delle categorie,
+In alto sono presenti i campi per la ricerca 
+in fondo i pulsanti per lo spostamento in caso di paginazione-->
+
+
 <body>
 	<%@ include file="header.jsp"%>
 	<hr>
 	<br>
-	<form method="post" action="<%=HTSView.CATEGORY_LIST_CTL%>">
+	<form method="post" action="<%=ViewsCtls.CATEGORY_LIST_CTL%>">
 
 		<!-- Area per la ricerca nelle categorie con pulsante Reset -->
 

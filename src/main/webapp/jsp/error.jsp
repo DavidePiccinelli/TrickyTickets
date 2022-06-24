@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<!-- Pagina di errore con sfondo e messaggio dedicato -->
+
 <%@ include file="header.jsp" %>
 
 <!-- Sfondo -->
@@ -24,7 +26,7 @@
       </div>
     </div>
   </div>
-  <!-- Background image -->   
+ 
   
 <%@ include file="footer.jsp" %>
 </body>

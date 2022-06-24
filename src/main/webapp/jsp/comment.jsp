@@ -1,6 +1,7 @@
 <%@page import="polimi.provafinale.trickytickets.ctl.CommentCtl"%>
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -11,6 +12,12 @@
 <title>Commento</title>
 </head>
 <body>
+
+<!--La pagina innanzitutto ottiene i dati per il timestamp dopodiche consente di compilare la form
+per la creazione del commento da associare al ticket precedentemente selezionato, consente poi di salvare il ticket
+o ripristinare il campo -->
+
+
 	<%@ include file="header.jsp"%> 
 		<hr>
 		<br> 
@@ -22,7 +29,7 @@
 				<b><font color="red"> <%=ServletUtility.getErrorMessage(request)%></font></b> 
 				<b><font color="Green"> <%=ServletUtility.getSuccessMessage(request)%></font></b>				
 				<hr>
-				<form method="post" action="<%=HTSView.COMMENT_CTL%>">
+				<form method="post" action="<%=ViewsCtls.COMMENT_CTL%>">
 
 					<jsp:useBean id="bean" class="polimi.provafinale.trickytickets.bean.CommentBean"
 						scope="request"></jsp:useBean>

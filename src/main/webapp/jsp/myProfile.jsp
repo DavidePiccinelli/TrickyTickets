@@ -3,6 +3,7 @@
 <%@page import="java.util.HashMap"%> 
 <%@page import="polimi.provafinale.trickytickets.util.DataUtility"%>
 <%@page import="polimi.provafinale.trickytickets.util.ServletUtility"%>
+<%@page import="polimi.provafinale.trickytickets.ctl.ViewsCtls"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,6 +13,9 @@
 <title>Profilo utente</title>
 </head>
 <body>
+<!--La pagina innanzitutto ottiene i dati per il timestamp poi consente di gestire il profilo
+andando a modificare le form e selezionando il reparto aziendale oppure di accedere alla pagina del cambio password-->
+
 	<%@ include file="header.jsp"%>
 		<hr>
 		<br>
@@ -23,7 +27,7 @@
 				</font></b> <b><font color="Green"> <%=ServletUtility.getSuccessMessage(request)%>
 				</font></b> 
 				<hr>
-				<form method="post" action="<%=HTSView.MY_PROFILE_CTL%>"> 
+				<form method="post" action="<%=ViewsCtls.MY_PROFILE_CTL%>"> 
 
 					<jsp:useBean id="bean" class="polimi.provafinale.trickytickets.bean.UserBean"
 						scope="request"></jsp:useBean>
@@ -37,7 +41,7 @@
 					<input type="hidden" name="modifiedDatetime"
 						value="<%=DataUtility.getTimestamp(bean.getModifiedDatetime())%>">
 
-					<!-- Email input -->
+					<!-- Form dei dati -->
 					<div class="form-outline mb-4">
 					 <label
 							class="form-label" >Nome</label>

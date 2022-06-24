@@ -1,6 +1,8 @@
 package polimi.provafinale.trickytickets.bean;
 
 //Bean per gli utenti del servizio, estende la classe astratta BaseBean aggiungendo solo i dati rilevanti 
+//che possono comunque essere definiti dall'azienda che implementa il sistema; nel mio esempio
+//ho aggiunto email, telefono, e il reparto aziendale di cui fa parte l'utente.
 
 public class UserBean extends BaseBean {
 

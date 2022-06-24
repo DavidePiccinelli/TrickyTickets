@@ -17,12 +17,17 @@ import polimi.provafinale.trickytickets.util.DataUtility;
 import polimi.provafinale.trickytickets.util.PropertyReader;
 import polimi.provafinale.trickytickets.util.ServletUtility;
 
+/*Questa servlet gestisce la visualizzazione dell'elenco di utenti ed è visualizzabile
+ * soltanto dai fornitori (il controllo avviene nella get)
+ * crea una lista di utenti con paginazione e implementa inoltre la ricerca per nome o per email 
+ * nella tabella degli utenti*/
+
 @WebServlet(name = "UserListCtl", urlPatterns = { "/ctl/userList" })
 public class UserListCtl extends BaseCtl {
 
 	private static final long serialVersionUID = 1L;
 
-	protected BaseBean populateBean(HttpServletRequest request) {
+	protected BaseBean populateBean(HttpServletRequest request) { //usato per la ricerca
 
 		UserBean bean = new UserBean();		
 		bean.setName(DataUtility.getString(request.getParameter("name")));
@@ -40,7 +45,7 @@ public class UserListCtl extends BaseCtl {
 		
 		if (user.getRoleId() != 1)
 			
-		{	ServletUtility.forward(HTSView.ERROR_VIEW, request, response);
+		{	ServletUtility.forward(ViewsCtls.ERROR_VIEW, request, response);
 			return;
 		}
 
@@ -98,7 +103,7 @@ public class UserListCtl extends BaseCtl {
 				}
 
 			}  else if (OP_RESET.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(HTSView.USER_LIST_CTL, request, response);
+				ServletUtility.redirect(ViewsCtls.USER_LIST_CTL, request, response);
 				return;
 			}
 		
@@ -120,6 +125,6 @@ public class UserListCtl extends BaseCtl {
 	}
 	
 	protected String getView() {
-		return HTSView.USER_LIST_VIEW;
+		return ViewsCtls.USER_LIST_VIEW;
 	}
 }
